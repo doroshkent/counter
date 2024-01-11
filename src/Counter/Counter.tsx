@@ -9,7 +9,11 @@ type CounterPropsType = {
 
 export const Counter: React.FC<CounterPropsType> = ({ value, setValue, maxValue }) => {
   const incrementHandler = () => {
-    value < maxValue && setValue( value + 1 )
+    if (value >= maxValue) {
+      return;
+    }
+
+    setValue( value + 1 )
   }
 
   const resetHandler = () => {

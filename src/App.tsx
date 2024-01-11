@@ -1,25 +1,17 @@
 import React, { useState } from 'react';
 import './App.css';
 import { Counter } from "./Counter/Counter";
-import styled from "styled-components";
+import { S } from './App_Styles';
 
 function App() {
   const [ value, setValue ] = useState( 0 );
   const maxValue = 5;
 
   return (
-    <AppWrapper>
+    <S.App>
       <Counter value={ value } setValue={ setValue } maxValue={ maxValue } />
-    </AppWrapper>
+    </S.App>
   );
 }
-
-const AppWrapper = styled.div`
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #2f333c;
-`
 
 export default App;
