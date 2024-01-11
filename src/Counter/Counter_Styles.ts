@@ -1,35 +1,6 @@
-import React from 'react';
 import styled from "styled-components";
 
-type CounterPropsType = {
-  value: number
-  setValue: (newValue: number) => void
-  maxValue: number
-}
-
-export const Counter: React.FC<CounterPropsType> = ({ value, setValue, maxValue }) => {
-  const incrementHandler = () => {
-    value < maxValue && setValue( value + 1 )
-  }
-
-  const resetHandler = () => {
-    setValue( 0 );
-  }
-
-  return (
-    <CounterWrapper>
-      <Value value={ value } maxValue={ maxValue }>
-        { value }
-      </Value>
-      <ButtonsWrapper>
-        <Button disabled={ value >= maxValue } onClick={ incrementHandler }>inc</Button>
-        <Button disabled={ value === 0 } onClick={ resetHandler }>reset</Button>
-      </ButtonsWrapper>
-    </CounterWrapper>
-  );
-};
-
-const CounterWrapper = styled.div`
+const Counter = styled.div`
   width: 600px;
   height: 400px;
   border: 3px solid #6ddffc;
@@ -55,7 +26,7 @@ const Value = styled.div<{ value: number, maxValue: number }>`
   flex-grow: 1;
 `
 
-const ButtonsWrapper = styled.div`
+const Buttons = styled.div`
   width: 100%;
   height: 150px;
   border: 3px solid #6ddffc;
@@ -75,3 +46,10 @@ const Button = styled.button<{disabled: boolean}>`
   padding: 5px 10px;
   cursor: pointer;
 `
+
+export const S = {
+  Counter,
+  Value,
+  Buttons,
+  Button
+}

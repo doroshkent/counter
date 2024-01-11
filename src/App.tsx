@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import { Counter } from "./Counter";
+import { Counter } from "./Counter/Counter";
 import styled from "styled-components";
 
 function App() {
