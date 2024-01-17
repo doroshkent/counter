@@ -17,13 +17,14 @@ const Setting = styled.div`
   justify-content: space-between;
 `
 
-const Input = styled.input`
+const Input = styled.input<{error: boolean}>`
   width: 200px;
-  border: 2px solid ${theme.colors.primary};
+  border: 2px solid ${props => props.error ? "red" : theme.colors.primary};
   border-radius: 5px;
   text-align: center;
   font-size: 20px;
   font-weight: 600;
+  background-color: ${props => props.error ? "#f2a5b6" : "white"};
 `
 
 export const S = {
