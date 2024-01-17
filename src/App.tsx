@@ -1,15 +1,31 @@
 import React, { useState } from 'react';
 import './App.css';
-import { Counter } from "./Counter/Counter";
-import { S } from './App_Styles';
+import { Counter } from "pages/counter/Counter";
+import { S } from 'App_Styles';
+import { Navigate, Route, Routes } from "react-router-dom";
+import { Settings } from "pages/settings/Settings";
+
+export const PATH = {
+  counter: '/counter',
+  settings: '/setting',
+}
 
 function App() {
-  const [ value, setValue ] = useState( 0 );
-  const maxValue = 5;
+  const [ minValue, setMinValue ] = useState( 1);
+  const [ maxValue, setMaxValue ] = useState( 5 );
+  const [ value, setValue ] = useState( minValue);
 
   return (
     <S.App>
-      <Counter value={ value } setValue={ setValue } maxValue={ maxValue } />
+      <S.Content>
+        <Routes>
+          <Route path={ '/' } element={ <Navigate to={ PATH.counter } /> } />
+          <Route path={ PATH.counter }
+                 element={ <Counter value={ value } setValue={ setValue }
+                                    minValue={minValue} maxValue={ maxValue } /> } />
+          <Route path={ PATH.settings } element={ <Settings /> } />
+        </Routes>
+      </S.Content>
     </S.App>
   );
 }
