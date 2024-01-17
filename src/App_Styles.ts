@@ -1,23 +1,18 @@
 import styled from "styled-components";
+import { Wrapper } from "components/Wrapper";
+import { theme } from "styles/Theme";
 
 const App = styled.div`
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #2f333c;
+  background-color: ${theme.colors.secondary};
 `
 
-const Content = styled.div`
+const Content = styled(Wrapper)`
   width: 600px;
   height: 400px;
-  border: 3px solid #6ddffc;
-  border-radius: 20px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
 `
 
 export const S = {

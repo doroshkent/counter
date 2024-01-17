@@ -41,12 +41,14 @@ export const Settings: React.FC<SettingsPropsType> = ({ minValue, setMinValue, m
   return (
     <>
       <S.SettingsContent>
-        <div>
-          max value: <input type="number" value={ maxValue } onChange={ onMaxValueChangeHandler }  />
-        </div>
-        <div>
-          start value: <input type="number" value={ minValue } onChange={ onMinValueChangeHandler } />
-        </div>
+        <S.Setting>
+          <p>max value: </p>
+          <S.Input type="number" value={ maxValue } onChange={ onMaxValueChangeHandler }  />
+        </S.Setting>
+        <S.Setting>
+          <p>start value: </p>
+          <S.Input type="number" value={ minValue } onChange={ onMinValueChangeHandler } />
+        </S.Setting>
       </S.SettingsContent>
       <ButtonsGroup>
         <NavLink to={ PATH.counter }><Button onClick={ onSetHandler }>set</Button></NavLink>
