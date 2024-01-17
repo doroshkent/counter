@@ -8,10 +8,10 @@ type SettingPropsType = {
   error: boolean
 }
 
-export const Setting: React.FC<SettingPropsType> = ({title, value, onChange, error}) => {
+export const Setting: React.FC<SettingPropsType> = ({ title, value, onChange, error }) => {
   return (
     <S.Setting>
-      <p>{title}:</p>
+      <p>{ title }:</p>
       <S.Input type="number" value={ value } onChange={ onChange } error={ error } />
     </S.Setting>
   );

@@ -17,7 +17,7 @@ export const Counter: React.FC<CounterPropsType> = ({ value, setValue, maxValue,
     if (value >= maxValue) {
       return;
     }
-    setValue( value + 1 )
+    setValue( value + 1 );
   }
 
   const resetHandler = () => {
@@ -26,7 +26,7 @@ export const Counter: React.FC<CounterPropsType> = ({ value, setValue, maxValue,
 
   return (
     <>
-      <S.Value value={ value } maxValue={ maxValue }>
+      <S.Value value={ value } $maxValue={ maxValue }>
         { value }
       </S.Value>
       <ButtonsGroup>

@@ -18,30 +18,20 @@ export const Settings: React.FC<SettingsPropsType> = ({ minValue, setMinValue, m
   const [ error, setError ] = useState( "" );
 
   useEffect( () => {
-    const localMinValue = localStorage.getItem( 'minValue' );
-    const localMaxValue = localStorage.getItem( 'maxValue' );
-    if (localMinValue) {
-      setMinValue( JSON.parse( localMinValue ) )
-    }
-    if (localMaxValue) {
-      setMaxValue( JSON.parse( localMaxValue ) )
-    }
-  }, [] );
-  useEffect( () => {
     if (minValue < 0 || maxValue <= minValue) {
       setError( "Invalid value" )
     } else {
       setError( "" )
     }
-    localStorage.setItem( 'minValue', JSON.stringify( minValue ) )
-    localStorage.setItem( 'maxValue', JSON.stringify( maxValue ) )
   }, [ minValue, maxValue ] );
 
   const onMaxValueChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setMaxValue( Number( e.currentTarget.value ) );
+    localStorage.setItem( 'maxValue', e.currentTarget.value )
   }
   const onMinValueChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setMinValue( Number( e.currentTarget.value ) );
+    localStorage.setItem( 'minValue', e.currentTarget.value )
   }
   const onSetHandler = () => {
     setValue( minValue )
