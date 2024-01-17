@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import './App.css';
+import React, { useEffect, useState } from 'react';
 import { Counter } from "pages/counter/Counter";
 import { S } from 'App_Styles';
 import { Navigate, Route, Routes } from "react-router-dom";
@@ -11,10 +10,21 @@ export const PATH = {
 }
 
 function App() {
-  const [ minValue, setMinValue ] = useState( 1 );
+  const [ minValue, setMinValue ] = useState( 0 );
   const [ maxValue, setMaxValue ] = useState( 5 );
   const [ value, setValue ] = useState( minValue );
 
+  useEffect( () => {
+    const localMinValue = localStorage.getItem( 'minValue' );
+    const localMaxValue = localStorage.getItem( 'maxValue' );
+    if (localMinValue) {
+      setMinValue( JSON.parse( localMinValue ) )
+      setValue(JSON.parse( localMinValue ) )
+    }
+    if (localMaxValue) {
+      setMaxValue( JSON.parse( localMaxValue ) )
+    }
+  }, [] );
   return (
     <S.App>
       <S.Content>
