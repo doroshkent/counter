@@ -25,7 +25,7 @@ function App() {
                                     minValue={ minValue } maxValue={ maxValue } /> } />
           <Route path={ PATH.settings }
                  element={ <Settings minValue={ minValue } maxValue={ maxValue } setMinValue={ setMinValue }
-                                     setMaxValue={ setMaxValue } /> } />
+                                     setMaxValue={ setMaxValue } setValue={setValue} /> } />
         </Routes>
       </S.Content>
     </S.App>
