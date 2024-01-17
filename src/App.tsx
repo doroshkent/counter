@@ -11,9 +11,9 @@ export const PATH = {
 }
 
 function App() {
-  const [ minValue, setMinValue ] = useState( 1);
+  const [ minValue, setMinValue ] = useState( 1 );
   const [ maxValue, setMaxValue ] = useState( 5 );
-  const [ value, setValue ] = useState( minValue);
+  const [ value, setValue ] = useState( minValue );
 
   return (
     <S.App>
@@ -22,8 +22,10 @@ function App() {
           <Route path={ '/' } element={ <Navigate to={ PATH.counter } /> } />
           <Route path={ PATH.counter }
                  element={ <Counter value={ value } setValue={ setValue }
-                                    minValue={minValue} maxValue={ maxValue } /> } />
-          <Route path={ PATH.settings } element={ <Settings /> } />
+                                    minValue={ minValue } maxValue={ maxValue } /> } />
+          <Route path={ PATH.settings }
+                 element={ <Settings minValue={ minValue } maxValue={ maxValue } setMinValue={ setMinValue }
+                                     setMaxValue={ setMaxValue } /> } />
         </Routes>
       </S.Content>
     </S.App>
