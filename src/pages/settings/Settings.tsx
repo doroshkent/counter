@@ -4,6 +4,7 @@ import { PATH } from "App";
 import { Button } from "components/Button";
 import { NavLink } from "react-router-dom";
 import { S } from "./Settings_Styles"
+import { Setting } from "pages/settings/Setting/Setting";
 
 type SettingsPropsType = {
   minValue: number
@@ -48,14 +49,8 @@ export const Settings: React.FC<SettingsPropsType> = ({ minValue, setMinValue, m
   return (
     <>
       <S.SettingsContent>
-        <S.Setting>
-          <p>max value: </p>
-          <S.Input type="number" value={ maxValue } onChange={ onMaxValueChangeHandler } error={ !!error } />
-        </S.Setting>
-        <S.Setting>
-          <p>start value: </p>
-          <S.Input type="number" value={ minValue } onChange={ onMinValueChangeHandler } error={ !!error } />
-        </S.Setting>
+        <Setting title={ "max value" } value={ maxValue } onChange={ onMaxValueChangeHandler } error={ !!error } />
+        <Setting title={ "start value" } value={ minValue } onChange={ onMinValueChangeHandler } error={ !!error } />
       </S.SettingsContent>
       <ButtonsGroup>
         <NavLink to={ PATH.counter }><Button disabled={ !!error } onClick={ onSetHandler }>set</Button></NavLink>

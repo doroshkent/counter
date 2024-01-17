@@ -1,6 +1,6 @@
 import React from 'react';
 import { S } from 'pages/counter/Counter_Styles'
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { PATH } from "App";
 import { Button } from "components/Button";
 import { ButtonsGroup } from 'components/ButtonsGroup';
@@ -32,7 +32,7 @@ export const Counter: React.FC<CounterPropsType> = ({ value, setValue, maxValue,
       <ButtonsGroup>
         <Button disabled={ value >= maxValue } onClick={ incrementHandler }>inc</Button>
         <Button disabled={ value === minValue } onClick={ resetHandler }>reset</Button>
-        <NavLink to={ PATH.settings }><Button>set</Button></NavLink>
+        <Link to={ PATH.settings }><Button>set</Button></Link>
       </ButtonsGroup>
     </>
   );
