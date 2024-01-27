@@ -1,5 +1,5 @@
 import { ButtonsGroup } from 'components/ButtonsGroup';
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, FC, useEffect, useState } from 'react';
 import { PATH } from "App";
 import { Button } from "components/Button";
 import { NavLink } from "react-router-dom";
@@ -14,7 +14,10 @@ type SettingsPropsType = {
   setValue: (value: number) => void
 }
 
-export const Settings: React.FC<SettingsPropsType> = ({ minValue, setMinValue, maxValue, setMaxValue, setValue }) => {
+export const Settings: FC<SettingsPropsType> = ({
+                                                  minValue, setMinValue,
+                                                  maxValue, setMaxValue, setValue
+                                                }) => {
   const [ error, setError ] = useState( "" );
 
   useEffect( () => {

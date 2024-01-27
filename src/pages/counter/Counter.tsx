@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { S } from 'pages/counter/Counter_Styles'
 import { Link } from "react-router-dom";
 import { PATH } from "App";
@@ -7,22 +7,16 @@ import { ButtonsGroup } from 'components/ButtonsGroup';
 
 type CounterPropsType = {
   value: number
-  setValue: (newValue: number) => void
+  incrementCounter: () => void
+  resetCounter: () => void
   maxValue: number
   minValue: number
 }
 
-export const Counter: React.FC<CounterPropsType> = ({ value, setValue, maxValue, minValue }) => {
-  const incrementHandler = () => {
-    if (value >= maxValue) {
-      return;
-    }
-    setValue( value + 1 );
-  }
-
-  const resetHandler = () => {
-    setValue( minValue );
-  }
+export const Counter: FC<CounterPropsType> = ({
+                                                value, maxValue,
+                                                minValue, incrementCounter, resetCounter
+                                              }) => {
 
   return (
     <>
@@ -30,9 +24,11 @@ export const Counter: React.FC<CounterPropsType> = ({ value, setValue, maxValue,
         { value }
       </S.Value>
       <ButtonsGroup>
-        <Button disabled={ value >= maxValue } onClick={ incrementHandler }>inc</Button>
-        <Button disabled={ value === minValue } onClick={ resetHandler }>reset</Button>
-        <Link to={ PATH.settings }><Button>set</Button></Link>
+        <Button disabled={ value >= maxValue } onClick={ incrementCounter }>inc</Button>
+        <Button disabled={ value === minValue } onClick={ resetCounter }>reset</Button>
+        <Button>
+          <Link to={ PATH.settings }>set</Link>
+        </Button>
       </ButtonsGroup>
     </>
   );

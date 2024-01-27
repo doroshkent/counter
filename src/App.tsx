@@ -25,13 +25,24 @@ function App() {
       setMaxValue( JSON.parse( localMaxValue ) )
     }
   }, [] );
+
+  const incrementCounter = () => {
+    if (value >= maxValue) {
+      return;
+    }
+    setValue( value + 1 );
+  }
+  const resetCounter = () => {
+    setValue( minValue );
+  }
+
   return (
     <S.App>
       <S.Content>
         <Routes>
           <Route path={ '/' } element={ <Navigate to={ PATH.counter } /> } />
           <Route path={ PATH.counter }
-                 element={ <Counter value={ value } setValue={ setValue }
+                 element={ <Counter value={ value } incrementCounter={ incrementCounter } resetCounter={ resetCounter }
                                     minValue={ minValue } maxValue={ maxValue } /> } />
           <Route path={ PATH.settings }
                  element={ <Settings minValue={ minValue } maxValue={ maxValue } setMinValue={ setMinValue }
