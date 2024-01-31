@@ -9,10 +9,22 @@ type SettingPropsType = {
 }
 
 export const Setting: React.FC<SettingPropsType> = ({ title, value, onChange, error }) => {
+  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
+    let inputValue = e.target.value;
+    const maxLength = 6; // Maximum input length
+    if (inputValue.length > maxLength) {
+      inputValue = inputValue.slice(0, maxLength);
+    }
+    if (inputValue.startsWith("0") && inputValue.length > 1) {
+      inputValue = inputValue.slice(1);
+    }
+    e.target.value = inputValue;
+    onChange(e); // Call the onChange callback to update the value
+  };
   return (
     <S.Setting>
       <p>{ title }:</p>
-      <S.Input type="number" value={ value } onChange={ onChange } error={ error } />
+      <S.Input type="number" value={ value } onChange={ handleInput } error={ error } max={999999} />
     </S.Setting>
   );
 };

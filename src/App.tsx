@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Counter } from "pages/counter/Counter";
 import { S } from 'App_Styles';
 import { Navigate, Route, Routes } from "react-router-dom";
@@ -10,21 +10,21 @@ export const PATH = {
 }
 
 function App() {
-  const [ minValue, setMinValue ] = useState( 0 );
-  const [ maxValue, setMaxValue ] = useState( 5 );
-  const [ value, setValue ] = useState( minValue );
-
-  useEffect( () => {
+  const [ minValue, setMinValue ] = useState( () => {
     const localMinValue = localStorage.getItem( 'minValue' );
-    const localMaxValue = localStorage.getItem( 'maxValue' );
     if (localMinValue) {
-      setMinValue( JSON.parse( localMinValue ) )
-      setValue( JSON.parse( localMinValue ) )
+      return JSON.parse( localMinValue )
     }
+    return 0
+  } );
+  const [ maxValue, setMaxValue ] = useState( () => {
+    const localMaxValue = localStorage.getItem( 'maxValue' );
     if (localMaxValue) {
-      setMaxValue( JSON.parse( localMaxValue ) )
+      return JSON.parse( localMaxValue )
     }
-  }, [] );
+    return 5
+  } );
+  const [ value, setValue ] = useState( minValue );
 
   const incrementCounter = () => {
     if (value >= maxValue) {

@@ -1,5 +1,5 @@
 import { ButtonsGroup } from 'components/ButtonsGroup';
-import React, { ChangeEvent, FC, useEffect, useState } from 'react';
+import React, { ChangeEvent, FC, useState } from 'react';
 import { PATH } from "App";
 import { Button } from "components/Button";
 import { NavLink } from "react-router-dom";
@@ -20,21 +20,27 @@ export const Settings: FC<SettingsPropsType> = ({
                                                 }) => {
   const [ error, setError ] = useState( "" );
 
-  useEffect( () => {
-    if (minValue < 0 || maxValue <= minValue) {
+  const onMaxValueChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const enteredValue = Number( e.currentTarget.value );
+
+    if (enteredValue <= minValue) {
       setError( "Invalid value" )
     } else {
       setError( "" )
     }
-  }, [ minValue, maxValue ] );
 
-  const onMaxValueChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setMaxValue( Number( e.currentTarget.value ) );
-    localStorage.setItem( 'maxValue', e.currentTarget.value )
+    setMaxValue( enteredValue );
+    localStorage.setItem( 'maxValue', enteredValue.toString() );
   }
   const onMinValueChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setMinValue( Number( e.currentTarget.value ) );
-    localStorage.setItem( 'minValue', e.currentTarget.value )
+    const enteredValue = Number( e.currentTarget.value );
+    if (enteredValue < 0 || enteredValue >= maxValue) {
+      setError( "Invalid value" )
+    } else {
+      setError( "" )
+    }
+    setMinValue( enteredValue );
+    localStorage.setItem( 'minValue', enteredValue.toString() )
   }
   const onSetHandler = () => {
     setValue( minValue )
