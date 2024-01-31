@@ -10,8 +10,20 @@ export const PATH = {
 }
 
 function App() {
-  const [ minValue, setMinValue ] = useState( 1 );
-  const [ maxValue, setMaxValue ] = useState( 5 );
+  const [ minValue, setMinValue ] = useState( () => {
+    const localMinValue = localStorage.getItem( 'minValue' );
+    if (localMinValue) {
+      return JSON.parse( localMinValue )
+    }
+    return 0
+  } );
+  const [ maxValue, setMaxValue ] = useState( () => {
+    const localMaxValue = localStorage.getItem( 'maxValue' );
+    if (localMaxValue) {
+      return JSON.parse( localMaxValue )
+    }
+    return 5
+  } );
   const [ value, setValue ] = useState( minValue );
 
   const incrementCounter = () => {
