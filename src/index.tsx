@@ -5,13 +5,17 @@ import * as serviceWorker from './serviceWorker';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from "react-router-dom";
 import { GlobalStyle } from 'styles/Global.styled';
+import { Provider } from "react-redux";
+import { store } from "state/store";
 
 const container = document.getElementById( 'root' ) as HTMLElement
 const root = createRoot( container );
 root.render(
   <BrowserRouter>
-    <GlobalStyle />
-    <App />
+    <Provider store={ store }>
+      <GlobalStyle />
+      <App />
+    </Provider>
   </BrowserRouter>
 );
 
