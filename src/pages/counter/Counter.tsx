@@ -1,22 +1,19 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { S } from 'pages/counter/Counter_Styles'
 import { Link } from "react-router-dom";
 import { PATH } from "App";
 import { Button } from "components/Button";
 import { ButtonsGroup } from 'components/ButtonsGroup';
+import { useCounter } from "pages/counter/useCounter";
 
 type CounterPropsType = {
   value: number
-  incrementCounter: () => void
-  resetCounter: () => void
   maxValue: number
   minValue: number
 }
 
-export const Counter: FC<CounterPropsType> = ({
-                                                value, maxValue,
-                                                minValue, incrementCounter, resetCounter
-                                              }) => {
+export const Counter = ({ value, maxValue, minValue }: CounterPropsType) => {
+  const { incrementCounter, resetCounter } = useCounter( value, maxValue, minValue )
 
   return (
     <>

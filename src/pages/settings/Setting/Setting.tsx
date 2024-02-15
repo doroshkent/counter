@@ -10,7 +10,7 @@ type SettingPropsType = {
 
 export const Setting: React.FC<SettingPropsType> = ({ title, value, onChange, error }) => {
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
-    let inputValue = e.target.value;
+    let inputValue = e.currentTarget.value;
     const maxLength = 6; // Maximum input length
     if (inputValue.length > maxLength) {
       inputValue = inputValue.slice(0, maxLength);
@@ -18,7 +18,7 @@ export const Setting: React.FC<SettingPropsType> = ({ title, value, onChange, er
     if (inputValue.startsWith("0") && inputValue.length > 1) {
       inputValue = inputValue.slice(1);
     }
-    e.target.value = inputValue;
+    e.currentTarget.value = inputValue;
     onChange(e); // Call the onChange callback to update the value
   };
   return (
