@@ -1,7 +1,7 @@
 import React from 'react';
 import { S } from 'pages/counter/Counter_Styles'
 import { Link } from "react-router-dom";
-import { PATH } from "App";
+import { PATH } from "app/App";
 import { Button } from "components/Button";
 import { ButtonsGroup } from 'components/ButtonsGroup';
 import { useCounter } from "pages/counter/useCounter";

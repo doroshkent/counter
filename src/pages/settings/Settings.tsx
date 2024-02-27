@@ -1,6 +1,6 @@
 import { ButtonsGroup } from 'components/ButtonsGroup';
 import React from 'react';
-import { PATH } from "App";
+import { PATH } from "app/App";
 import { Button } from "components/Button";
 import { NavLink } from "react-router-dom";
 import { S } from "./Settings_Styles"
