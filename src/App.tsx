@@ -10,7 +10,7 @@ import { CounterStateType } from "state/counterReducer";
 export const PATH = {
   counter: '/counter',
   settings: '/setting',
-}
+} as const
 
 function App() {
   const {
